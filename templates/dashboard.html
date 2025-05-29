@@ -1,0 +1,63 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - MOPAS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, {{ user.first_name }}!</h1>
+
+    <section>
+      <h2>My Contribution</h2>
+      <p>{{ user.contribution }}%</p>
+    </section>
+
+    <section>
+      <h2>Finances</h2>
+      <div class="finance-item">
+        <h3>Mission</h3>
+        <a href="https://paybill.co.ke/0111413449" target="_blank" class="btn">Pay</a>
+      </div>
+      <div class="finance-item">
+        <h3>Group Registration</h3>
+        <a href="https://paybill.co.ke/707550503" target="_blank" class="btn">Pay</a>
+      </div>
+      <div class="finance-item">
+        <h3>My Payment Status</h3>
+        <p>Total Contribution: {{ user.contribution }}%</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Apply to Lead Intercessors</h2>
+      <p>Day & Time: Wednesday - Saturday at 9 PM</p>
+      <form action="mailto:menofpowerandsubstance@outlook.com" method="post" enctype="text/plain">
+        <label for="lead_name">Your Name:</label><br />
+        <input type="text" id="lead_name" name="lead_name" required /><br />
+        <label for="lead_contact">Contact:</label><br />
+        <input type="text" id="lead_contact" name="lead_contact" required /><br /><br />
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Apply to Host a Mission</h2>
+      <form action="mailto:menofpowerandsubstance@proton.me" method="post" enctype="text/plain">
+        <label for="church_name">Church Name:</label><br />
+        <input type="text" id="church_name" name="church_name" required /><br />
+        <label for="church_contact">Contact:</label><br />
+        <input type="text" id="church_contact" name="church_contact" required /><br />
+        <label for="church_location">Location:</label><br />
+        <input type="text" id="church_location" name="church_location" required /><br /><br />
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+
+    <p><a href="{{ url_for('logout') }}" class="btn">Logout</a></p>
+  </div>
+</body>
+</html>

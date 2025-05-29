@@ -1,0 +1,49 @@
+<!-- templates/register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register - MEN OF POWER AND SUBSTANCE</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Register - MEN OF POWER AND SUBSTANCE</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('register') }}">
+      <label for="first_name">First Name *</label>
+      <input type="text" id="first_name" name="first_name" required />
+
+      <label for="second_name">Second Name (Optional)</label>
+      <input type="text" id="second_name" name="second_name" />
+
+      <label for="last_name">Last Name *</label>
+      <input type="text" id="last_name" name="last_name" required />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="group_no">Group No (e.g. mopas532J) *</label>
+      <input type="text" id="group_no" name="group_no" pattern="mopas[5-9][0-9]{2,}J" title="Format: mopas[number≥500]J" required />
+
+      <label for="contact">Contact *</label>
+      <input type="text" id="contact" name="contact" required />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+  </div>
+</body>
+</html>
